@@ -14,7 +14,7 @@ class Game:
         while livello <= self.livello_max:
             domande_liv_corrente = []
             for domanda in self.domande:
-                if livello == domanda.livello:
+                if livello == int(domanda.livello):
                     domande_liv_corrente.append(domanda)
             domanda_proposta = random.choice(domande_liv_corrente)
             array_risp = [domanda_proposta.risp1, domanda_proposta.risp2, domanda_proposta.risp3, domanda_proposta.risp4]
@@ -32,6 +32,7 @@ class Game:
                 print("Risposta corretta!\n")
             else:
                 print(f"Risposta sbagliata! La risposta corretta era: {array_risp.index(domanda_proposta.risp_corr)+1}")
+                break
         self.punteggio = punteggio
         print("\n")
         print(f"Hai totalizzato {punteggio} punti!")

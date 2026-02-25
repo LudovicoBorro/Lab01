@@ -33,7 +33,8 @@ def main():
         pass
     partita = g.Game(lista_domande,livello_max(lista_domande))
     lista_partite.append(partita)
-    punteggio_partita = partita.partita()
+    partita.partita()
+    punteggio_partita = partita.punteggio
     nickname = input("Inserisci il tuo nickname per salvare il punteggio: ")
     giocatore = p.Player(nickname, punteggio_partita)
     lista_giocatori.append(giocatore)
@@ -42,7 +43,7 @@ def main():
         file = open(output_risp, "r")
         for line in file:
             campi = line.split(" ")
-            nicknames[campi[0]] = campi[1]
+            nicknames[campi[0]] = int(campi[1])
         file.close()
     finally:
         pass
@@ -51,7 +52,7 @@ def main():
     try:
         file = open(output_risp, "w")
         for nick in nicknames_sorted:
-            file.write(nick[0] + " " + nick[1] + "\n")
+            file.write(nick[0] + " " + str(nick[1]) + "\n")
         file.close()
     finally:
         pass
